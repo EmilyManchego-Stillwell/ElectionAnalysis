@@ -16,23 +16,41 @@ file_to_load = os.path.join("Resources", "election_results.csv")
 
 file_to_save = os.path.join("Analysis", "election_analysis.txt")
 
+# 1.Initialize a total votes counter
+
+total_votes = 0
+
+#setting an open list to add candidate names
+candidate_options = []
+
 #Open the election results and read the file
 
 with open(file_to_load) as election_data:
-    
-    # To do : read and analyze data here
-    #Read the file object with the reader function
+
     file_reader = csv.reader(election_data)
 
-    # print the header row
+    # read the header row
     headers = next(file_reader)
-
-    print(headers)
 
     # print each row in the CSV file
 
-    # for row in file_reader:
-    #     print(row)
+    for row in file_reader:
+        # 2. Add to the total vote count
+        total_votes += 1
+
+        #Print the dandidate name from each row
+        candidate_name = row[2]
+
+        #if statment to see if candidate name has already been added to the candidate list
+        if candidate_name not in candidate_options:
+            #add the candidate name to the candidate list
+            candidate_options.append(candidate_name)
+
+# 3. Print the total votes.
+print(f"{total_votes:,}")
+print(candidate_options)
+
+
 
 
 
