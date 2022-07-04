@@ -12,6 +12,12 @@ file_to_save = os.path.join("Analysis", "election_results.txt")
 #initialize a total votes counter
 total_votes = 0
 
+#creating an empty list to add counties
+counties = []
+
+#creating an empty dictionary to show county names with total votes
+county_votes = {}
+
 #creating an empty list to add candidate names
 candidate_options = []
 
@@ -52,6 +58,15 @@ with open(file_to_load) as election_data:
         #add a vote to that candidate's count
         candidate_votes[candidate_name] += 1
 
+        #get the county name from each row
+        county_name = row[1]
+        
+        #if statement to see if county name has already been added to the list
+        if county_name not in counties:
+            counties.append(county_name)
+            county_votes[county_name] = 0
+        county_votes[county_name] += 1
+        
 #save the results to a text file
 with open(file_to_save, "w") as txt_file:
     #will print the final vote count to the terminal
@@ -101,3 +116,19 @@ with open(file_to_save, "w") as txt_file:
     print(winning_candidate_summary)
     #save the candidate summary to the txt file
     txt_file.write(winning_candidate_summary)
+
+    #list each county on its own row with the total number of votes per county. 
+    #list each county showing the percentage of votes for each county
+    #list the county with the highest turnout stating number of voters and percentage of voters
+
+    #County Results
+    # -------------------------
+    # Arapahoe: county_vote_percentage% (county_votes)
+    # Denver: county_vote_percentage% (county_votes)
+    # Jefferson: county_vote_percentage% (county_votes)
+    # ---------------------------
+    # County with Highest Turnout: county_name
+    # Vote Count for County with Highest Turnout: county_votes
+    # Highest County Voter Turnout Percentage: 73.8
+    # ---------------------------
+    
