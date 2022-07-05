@@ -16,7 +16,7 @@ The purpose of this project is to gather data from a recent congressional electi
 ## Summary
 The analysis of the election results show the following:
 - The total number of votes in the election was 369,711
-- There was a total of three candidates running in the election
+- There was a total of three candidates running in the election:
     - Charles Casper Stockham
     - Diana DeGette
     - Raymon Anthony Doane
@@ -28,5 +28,17 @@ The analysis of the election results show the following:
     - Diana DeGette who received 73.8% of the votes and had a total of 272,892 votes.
 
 ## Challenge Overview
+For the Module 3 Challenge I needed to add new code that would give the client a summary of the county voter turnout for each county, and then show the summarized information of the county that had the highest turnout. 
 
 ## Challenge Summary
+The analysis of the county results show the following:
+- There was a total of three counties included in the election results
+    - Arapahoe County
+    - Denver County
+    - Jefferson County
+- The individual county results were:
+    - Jefferson County had 10.5% of the votes with a total of 38,855 votes.
+    - Denver County had 82.8% of the votes with a total of 306,055 votes.
+    - Arapahoe County had 6.7% of the votes with a total of 24,801 votes.
+- The county with the highest voter turnout was:
+    - Denver County had the highest voter turnout with 306,055 votes which was 82.8% of the total votes.
