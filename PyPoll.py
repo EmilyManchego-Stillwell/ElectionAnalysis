@@ -31,6 +31,13 @@ winning_count = 0
 
 winning_percentage = 0
 
+#best county turnout and best county vote count tracker
+highest_county_turnout = ""
+
+best_turnout = 0
+
+best_county_percentage = 0
+
 #open the election results and read the file
 with open(file_to_load) as election_data:
 
@@ -116,6 +123,38 @@ with open(file_to_save, "w") as txt_file:
     print(winning_candidate_summary)
     #save the candidate summary to the txt file
     txt_file.write(winning_candidate_summary)
+
+    print("County Results\n" + "-"*25 + "\n")
+    txt_file.write("County Results\n" + "-"*25 + "\n")
+
+    #will print the final county counts to the terminal
+    for county_name in county_votes:
+        county_vote_percentage = (county_votes[county_name]/total_votes)*100
+        county_results = (f"{county_name}: {county_vote_percentage:.1f}% ({county_votes[county_name]:,})\n")
+    
+        print(county_results)
+        txt_file.write(county_results)
+
+        #Determine county with best turnout
+        if (county_votes[county_name] > best_turnout) and (county_vote_percentage > best_county_percentage):
+
+            best_turnout = county_votes[county_name]
+
+            best_county_percentage = county_vote_percentage
+
+            highest_county_turnout = county_name
+
+    #will print summary for county with best turnout
+    highest_county_turnout_summary =(
+        f"---------------------------\n"
+        f"Highest County Turnout: {highest_county_turnout}\n"
+        f"Highest County Turnout Vote Count: {best_turnout:,}\n"
+        f"Highest County Turnout Vote Percentage: {best_county_percentage:.1f}%\n"
+        f"---------------------------\n"
+    )
+
+    print(highest_county_turnout_summary)
+    txt_file.write(highest_county_turnout_summary)
 
     #list each county on its own row with the total number of votes per county. 
     #list each county showing the percentage of votes for each county
